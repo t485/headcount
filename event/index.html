@@ -93,11 +93,11 @@
                     var additional = $("#additional").val();
                     console.log(additional);
 
-                    var driver = $("#driver").prop('checked');
+                    var driver = $("#driver").is(':checked');
                     console.log(driver);
                 });
                 $("#driver").change(function () {
-                    if (driver.prop("checked")) {
+                    if ($("#driver").is(":checked")) {
                         $("#driver-seats").removeAttr("disabled")
 
                     } else {
