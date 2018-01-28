@@ -28,17 +28,19 @@
                     <option value="blobfish">Blobfish</option>
                     <option value="wildcats">Wildcats</option>
                 </select>
-                <br><br>
+                <br>
+                <br>
                 <div class="form-inline">
                     <div class="form-group">
-                        <label for="additional">Additional Prople(Other than yourself)</label>
+                        <label for="additional">Additional People(Other than yourself)</label>
                         <input type="number" id="additional" class="form-control mx-sm-3">
 
                     </div>
                 </div>
                 <div class="custom-control custom-checkbox">
                     <input type="checkbox" class="custom-control-input" id="driver">
-                    <label class="custom-control-label" for="driver">I can provide a driver.</label>
+                    <label class="custom-control-label" for="driver">I can provide a driver with
+                        <input type="number" id="driver-seats" class="form-control mx-sm-1" disabled> seats(including you, the driver, and anyone else who is going).</label>
                 </div>
                 <button class="btn btn-danger btn-block" id="submit">Submit</button>
             </div>
@@ -61,7 +63,7 @@
             </div>
             <a href="https://www.t485.org/event.html?event=-L2TGdNphlomb_n8k3Sn">View full event page on t485.org.</a>
             <br>
-            
+
 
             <script src="/js/jquery.min.js"></script>
             <script src="/js/bootstrap.bundle.min.js"></script>
@@ -80,7 +82,7 @@
             </script>
             <script>
                 /* global firebase $ */
-                $("#submit").click(function(){
+                $("#submit").click(function () {
                     //data validation
                     var name = $("#name").val();
                     console.log(name);
@@ -91,9 +93,17 @@
                     var additional = $("#additional").val();
                     console.log(additional);
 
-                    var driver = $("#driver").val();
+                    var driver = $("#driver").prop('checked');
                     console.log(driver);
                 });
+                $("#driver").change(function () {
+                    if (driver.prop("checked")) {
+                        $("#driver-seats").removeAttr("disabled")
+
+                    } else {
+                        $("#driver-seats").attr("disabled", "")
+                    }
+                })
 
             </script>
         </div>
